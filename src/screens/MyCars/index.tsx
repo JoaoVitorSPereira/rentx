@@ -30,7 +30,7 @@ import {
 
 import { BackButton } from '../../components/BackButton';
 import { Car } from '../../components/Car';
-import { Load } from '../../components/Load';
+import { LoadAnimated } from '../../components/LoadAnimated';
 
 interface CarProps {
   id: string;
@@ -81,7 +81,7 @@ export function MyCars() {
         <SubTitle>Conforto, segurança e praticidade.</SubTitle>
       </Header>
       {loading ? (
-        <Load />
+        <LoadAnimated />
       ) : (
         <Content>
           <Appointments>
