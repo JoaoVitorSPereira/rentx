@@ -33,7 +33,8 @@ export function SignIn() {
       });
 
       await schema.validate({ email, password });
-      Alert.alert('TUDO CERTO');
+      Alert.alert('Seja Bem-Vindo');
+      navigation.navigate('Home');
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message);
