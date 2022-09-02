@@ -14,12 +14,15 @@ import * as Yup from 'yup';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { PasswordInput } from '../../components/PasswordInput';
+import { useAuth } from '../../hooks/auth';
+
 import theme from '../../styles/theme';
 
 import { Container, Header, SubTitle, Title, Form, Footer } from './styles';
 
 export function SignIn() {
   const navigation = useNavigation();
+  const { signIn } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -34,7 +37,7 @@ export function SignIn() {
 
       await schema.validate({ email, password });
       Alert.alert('Seja Bem-Vindo');
-      navigation.navigate('Home');
+      signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message);
@@ -48,7 +51,11 @@ export function SignIn() {
   }
 
   return (
-    <KeyboardAvoidingView behavior='position' enabled>
+    <KeyboardAvoidingView
+      behavior='position'
+      enabled
+      style={{ backgroundColor: 'black' }}
+    >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
           <StatusBar
