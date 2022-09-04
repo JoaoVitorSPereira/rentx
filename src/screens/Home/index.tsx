@@ -28,7 +28,7 @@ export function Home() {
   }
 
   useEffect(() => {
-    async function fetchCars() {
+    (async () => {
       try {
         const response = await api.get('/cars');
         setCars(response.data);
@@ -37,8 +37,7 @@ export function Home() {
       } finally {
         setLoading(false);
       }
-    }
-    fetchCars();
+    })();
   }, []);
 
   return (
