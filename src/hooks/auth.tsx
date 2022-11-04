@@ -1,5 +1,5 @@
-import React, { createContext, useState, useContext } from 'react';
-import { api } from '../services/api';
+import React, { createContext, useState, useContext } from "react";
+import { api } from "../services/api";
 
 interface User {
   id: string;
@@ -34,7 +34,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   const [data, setData] = useState<AuthState>({} as AuthState);
 
   async function signIn({ email, password }: SignInCredentials) {
-    const response = await api.post('/sessions', {
+    const response = await api.post("/sessions", {
       email,
       password,
     });
@@ -42,6 +42,7 @@ function AuthProvider({ children }: AuthProviderProps) {
     const { token, user } = response.data;
 
     api.defaults.headers.authorization = `Bearer ${token}`;
+
     setData({ token, user });
   }
 

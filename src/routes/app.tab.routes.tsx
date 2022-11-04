@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import { Platform } from 'react-native';
+import { Platform } from "react-native";
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { useTheme } from 'styled-components';
+import { useTheme } from "styled-components";
 
-import HomeSvg from '../assets/car.svg';
-import CarSvg from '../assets/car.svg';
-import PersonSvg from '../assets/people.svg';
+import HomeSvg from "../assets/home.svg";
+import CarSvg from "../assets/car.svg";
+import PersonSvg from "../assets/people.svg";
 
-import { MyCars } from '../screens/MyCars';
+import { MyCars } from "../screens/MyCars";
 
-import { AppStackRoutes } from './app.stack.routes';
+import { AppStackRoutes } from "./app.stack.routes";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -26,14 +26,14 @@ export function AppTabRoutes() {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          paddingVertical: Platform.OS === 'ios' ? 20 : 0,
+          paddingVertical: Platform.OS === "ios" ? 20 : 0,
           height: 70,
           backgroundColor: theme.colors.background_primary,
         },
       }}
     >
       <Screen
-        name='Home'
+        name="AppStackRoutes"
         component={AppStackRoutes}
         options={{
           tabBarIcon: ({ color }) => (
@@ -42,20 +42,20 @@ export function AppTabRoutes() {
         }}
       />
       <Screen
-        name='Profile'
+        name="Profile"
         component={AppStackRoutes}
         options={{
           tabBarIcon: ({ color }) => (
-            <PersonSvg width={20} height={20} fill={color} />
+            <CarSvg width={20} height={20} fill={color} />
           ),
         }}
       />
       <Screen
-        name='MyCars'
+        name="MyCars"
         component={MyCars}
         options={{
           tabBarIcon: ({ color }) => (
-            <CarSvg width={20} height={20} fill={color} />
+            <PersonSvg width={20} height={20} fill={color} />
           ),
         }}
       />
